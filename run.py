@@ -12,9 +12,13 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('hangman_words')
 
-words = SHEET.worksheet('words')
+def get_user_guess():
+    """
+    Get user letter guess for word
+    """
+    print("Enter your letter guess here.\n")
 
-data = words.get_all_values()
+    data_str = input("Enter your guess here: ")
+    print(f"The data provided is {data_str}")
 
-print(data)
-
+get_user_guess()
