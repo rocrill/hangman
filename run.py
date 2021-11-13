@@ -93,9 +93,11 @@ def play_game():
     answer = select_word() 
     image = HANGMANPICS[0]
     print(image)
+    print(answer)
     print()
     print ('_ ' * len(answer))
-    checks_guess(answer)
+    checks_guess(answer)    
+
 
 def checks_guess(answer):
     """
