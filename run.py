@@ -67,7 +67,7 @@ HANGMANPICS = [
 
 def select_word():
     """
-    Selects random word from Google Sheet database
+    Selects random word from Google Sheet database.
     """
     words = SHEET.worksheet("words").col_values(1)
 
@@ -76,12 +76,15 @@ def select_word():
 
 def get_user_guess():
     """
-    Get user letter guess for word
+    Get user letter guess for word.
     """
     print("Enter your letter guess here.\n")
 
     data_str = input("Enter your guess here: ")
     print(f"The data provided is {data_str}")
+    return data_str
+
+
 
 def play_game():
     """
@@ -90,6 +93,21 @@ def play_game():
     answer = select_word() 
     image = HANGMANPICS[0]
     print(image)
-    print ('_' * len(answer))
+    print()
+    print ('_ ' * len(answer))
+    checks_guess(answer)
+
+def checks_guess(answer):
+    """
+    Checks if guessed letter is in answer word.
+    """
+    guess = get_user_guess()
+    if guess in answer:
+        print(f'{guess} is a letter of the word!')
+    else:
+        print(f'{guess} is not a letter of the word :(')
+
 
 play_game()
+get_user_guess()
+checks_guess()
