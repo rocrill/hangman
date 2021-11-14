@@ -78,8 +78,7 @@ def get_user_guess():
     """
     Get user letter guess for word.
     """
-    print("Enter your letter guess here.\n")
-
+    
     data_str = input("Enter your guess here: ")
     print(f"The data provided is {data_str}")
     return data_str
@@ -91,21 +90,32 @@ def play_game():
     Plays game steps
     """
     wrong_guess_count = 0
+    correct_guesses = ''
     answer = select_word() 
     while True:
         image = HANGMANPICS[wrong_guess_count]
         print(image)
         if wrong_guess_count == 6:
+            print("GAME OVER!")
             return
         print(answer) #to be removed when game ready
         print()
-        print('_ ' * len(answer))
+        for letter in answer:
+            if letter in correct_guesses:
+                print(letter +' ', end='')
+            else: 
+                print('_ ', end='')    
+        print()        
         guess = get_user_guess()
         if guess in answer:
+            correct_guesses += guess
             print(f'{guess} is a letter of the word!')
+            print(answer)
         else:
             print(f'{guess} is not a letter of the word :(')
             wrong_guess_count += 1
+
+
 
 
 play_game()
