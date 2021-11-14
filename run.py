@@ -95,7 +95,7 @@ def play_game():
     while True:
         image = HANGMANPICS[wrong_guess_count]
         print(image)
-        print(answer) #to be removed when game ready
+        #print(answer) #to be removed when game ready
         print()
         game_points = 0
         for letter in answer:
@@ -107,6 +107,7 @@ def play_game():
         print()        
         if wrong_guess_count == 6:
             print("GAME OVER!")
+            print(answer)
             return
         elif game_points == len(answer):
             print("Congratulations, you won!")
@@ -115,7 +116,6 @@ def play_game():
         if guess in answer:
             correct_guesses += guess
             print(f'{guess} is a letter of the word!')
-            print(answer)
         else:
             print(f'{guess} is not a letter of the word :(')
             wrong_guess_count += 1
