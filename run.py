@@ -80,7 +80,6 @@ def get_user_guess():
     """
     
     data_str = input("Enter your guess here: ")
-    print(f"The data provided is {data_str}")
     return data_str
 
 
@@ -113,6 +112,7 @@ def play_game():
             print("Congratulations, you won!")
             return 
         guess = get_user_guess()
+        print(f"Guesses made so far are {correct_guesses}")
         if guess in answer:
             correct_guesses += guess
             print(f'{guess} is a letter of the word!')
