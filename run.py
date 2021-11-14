@@ -90,26 +90,21 @@ def play_game():
     """
     Plays game steps
     """
+    wrong_guess_count = 0
     answer = select_word() 
-    image = HANGMANPICS[0]
+    image = HANGMANPICS[wrong_guess_count]
     print(image)
-    print(answer)
+    print(answer) #to be removed when game ready
     print()
-    print ('_ ' * len(answer))
-    checks_guess(answer)    
-
-
-def checks_guess(answer):
-    """
-    Checks if guessed letter is in answer word.
-    """
+    print ('_ ' * len(answer))   
     guess = get_user_guess()
     if guess in answer:
         print(f'{guess} is a letter of the word!')
     else:
         print(f'{guess} is not a letter of the word :(')
+        wrong_guess_count += 1 
+
 
 
 play_game()
-get_user_guess()
-checks_guess()
+
