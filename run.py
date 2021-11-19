@@ -75,8 +75,8 @@ def select_difficulty_level():
     """
     level = None
     while level != 'e' and level != 'd':
-        level = input("Please choose a difficulty level. Enter 'e' for easy or 'd' for difficult: ")   
-    return level
+        level = input("Please choose a difficulty level. Enter 'e' for easy or 'd' for difficult:\n")   
+    return level 
 
 def select_word(level):
     """
@@ -94,7 +94,7 @@ def get_user_guess():
     Get user letter guess for word.
     """
     
-    data_str = input("Enter your guess here: ")
+    data_str = input("Enter your guess here:\n")
     return data_str
 
 def play_game():
