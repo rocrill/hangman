@@ -1,7 +1,6 @@
 import gspread
-import random
 from google.oauth2.service_account import Credentials
-
+import random 
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -83,10 +82,7 @@ def get_user_guess():
     data_str = input("Enter your guess here: ")
     return data_str
 
-def is_game_active(wrong_guess_count, game_points, answer):
-    if wrong_guess_count == 6 or game_points == len(answer):
-        return False
-    return True    
+
 
 def play_game():
     """
@@ -95,8 +91,7 @@ def play_game():
     wrong_guess_count = 0
     correct_guesses = ''
     answer = select_word() 
-    game_active = True
-    while game_active:
+    while True:
         image = HANGMANPICS[wrong_guess_count]
         print(image)
         #print(answer) #to be removed when game ready
@@ -108,22 +103,16 @@ def play_game():
                 game_points += 1
             else: 
                 print('_ ', end='')    
-        print()   
-        """
-        Variable to check if the game is active or not. 
-        Every loop, we check to see if the game is active or not. 
-        """   
-        game_active = is_game_active(wrong_guess_count, game_points, answer) 
-        """
+        print()        
         if wrong_guess_count == 6:
             print("GAME OVER!")
             print(answer)
             return
         elif game_points == len(answer):
             print("Congratulations, you won!")
-            return """
+            return 
         guess = get_user_guess()
-        print(f"Guesses made so far are: {correct_guesses}")
+        print(f"Guesses made so far are {correct_guesses}")
         if guess in answer:
             correct_guesses += guess
             print(f'{guess} is a letter of the word!')
