@@ -105,11 +105,10 @@ def play_game():
     correct_guesses = ''
     guess_list = []
     level = select_difficulty_level()
-    answer = select_word(level) 
+    answer = select_word(level).lower() 
     while True:
         image = HANGMANPICS[wrong_guess_count]
         print(image)
-        #print(answer) #to be removed when game ready
         print()
         game_points = 0
         for letter in answer:
@@ -123,12 +122,18 @@ def play_game():
         
         #Exit game condition.
         if wrong_guess_count == 6:
-            print("GAME OVER!")
-            print(answer)
+            if game_points == len(answer) - 1:
+                print("Game over! You were so close though! Better luck next time :D") 
+            else:
+                print("Game over! Better luck next time!")
+            print(f"The answer was: {answer}")
             return
         elif game_points == len(answer):
-            print("Congratulations, you won!")
-            return 
+            if wrong_guess_count > 4:
+                print("Congratulations, you won! You were cutting it close though...you must need more practice :P" )
+            else:
+                print("Congratulations, you won!")
+            return     
 
         guess = get_user_guess()
 
