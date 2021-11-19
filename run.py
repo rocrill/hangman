@@ -66,11 +66,16 @@ HANGMANPICS = [
       |
 =========''']
 
+def welcome_message():
+    print("Welcome to hangman!") 
+
 def select_difficulty_level():
     """
     User selects difficulty level.
     """
-    level = input("Choose difficulty level. Enter 'e' for easy or 'd' for difficult: ")
+    level = None
+    while level != 'e' and level != 'd':
+        level = input("Please choose a difficulty level. Enter 'e' for easy or 'd' for difficult: ")   
     return level
 
 def select_word(level):
@@ -146,5 +151,6 @@ def play_game():
             print(f'{guess} is not a letter of the word :(')
             wrong_guess_count += 1
 
+welcome_message()
 play_game()
 
