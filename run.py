@@ -1,6 +1,7 @@
 import gspread
-from google.oauth2.service_account import Credentials
 import random 
+import string
+from google.oauth2.service_account import Credentials
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -103,6 +104,9 @@ def play_game():
             else: 
                 print('_ ', end='')    
         print()        
+        
+        
+        #Exit game condition.
         if wrong_guess_count == 6:
             print("GAME OVER!")
             print(answer)
@@ -110,11 +114,19 @@ def play_game():
         elif game_points == len(answer):
             print("Congratulations, you won!")
             return 
+
         guess = get_user_guess()
+
+        #data validation.
+        if len(guess)>1:
+            print("Looks like you didn't enter a single letter! Please try again.")
+            continue
+        elif guess not in string.ascii_lowercase:
+            print("Looks like you didn't enter a letter! Please try again.")
+            continue
 
         if guess not in guess_list:
             guess_list.append(guess)
-        
 
         print("Guesses made so far are: " + ', '.join(guess_list))
         if guess in answer:
