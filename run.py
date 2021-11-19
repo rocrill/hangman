@@ -82,14 +82,13 @@ def get_user_guess():
     data_str = input("Enter your guess here: ")
     return data_str
 
-
-
 def play_game():
     """
     Plays game steps
     """
     wrong_guess_count = 0
     correct_guesses = ''
+    guess_list = []
     answer = select_word() 
     while True:
         image = HANGMANPICS[wrong_guess_count]
@@ -112,7 +111,12 @@ def play_game():
             print("Congratulations, you won!")
             return 
         guess = get_user_guess()
-        print(f"Guesses made so far are {correct_guesses}")
+
+        if guess not in guess_list:
+            guess_list.append(guess)
+        
+
+        print("Guesses made so far are: " + ', '.join(guess_list))
         if guess in answer:
             correct_guesses += guess
             print(f'{guess} is a letter of the word!')
