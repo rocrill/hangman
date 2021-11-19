@@ -66,14 +66,23 @@ HANGMANPICS = [
       |
 =========''']
 
-def select_word():
+def select_difficulty_level():
     """
-    Selects random word from Google Sheet database.
+    User selects difficulty level.
     """
-    words = SHEET.worksheet("words").col_values(1)
+    level = input("Choose difficulty level. Enter 'e' for easy or 'd' for difficult: ")
+    return level
 
-    return random.choice(words)
-
+def select_word(level):
+    """
+    Selects random word from Google Sheet database, based on user's chosen difficulty level.
+    """
+    if level == 'e':
+        words = SHEET.worksheet("words").col_values(1)
+        return random.choice(words)
+    elif level == 'd':
+        words = SHEET.worksheet("words").col_values(2)
+        return random.choice(words)
 
 def get_user_guess():
     """
@@ -90,7 +99,8 @@ def play_game():
     wrong_guess_count = 0
     correct_guesses = ''
     guess_list = []
-    answer = select_word() 
+    level = select_difficulty_level()
+    answer = select_word(level) 
     while True:
         image = HANGMANPICS[wrong_guess_count]
         print(image)
@@ -135,9 +145,6 @@ def play_game():
         else:
             print(f'{guess} is not a letter of the word :(')
             wrong_guess_count += 1
-
-
-
 
 play_game()
 
