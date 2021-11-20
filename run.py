@@ -158,6 +158,7 @@ def play_game():
         
         print("Guesses made so far are: " + ', '.join(guess_list))
 
+print('\n'*12)    
 welcome_message()
 play_game()
 
