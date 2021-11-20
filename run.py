@@ -97,6 +97,11 @@ def get_user_guess():
     data_str = input("Enter your guess here:\n")
     return data_str
 
+def clear_screen():
+    print(chr(27)+'[2j')
+    print('\033c')
+    print('\x1bc')   
+
 def play_game():
     """
     Plays game steps
@@ -136,7 +141,7 @@ def play_game():
             return     
 
         guess = get_user_guess()
-        print('\n'*12)    
+        clear_screen()   
 
         #data validation.
         if len(guess)>1:
@@ -158,7 +163,7 @@ def play_game():
         
         print("Guesses made so far are: " + ', '.join(guess_list))
 
-print('\n'*12)    
+clear_screen()   
 welcome_message()
 play_game()
 
