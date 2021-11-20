@@ -146,16 +146,20 @@ def play_game():
 
         #data validation.
         if len(guess)>1:
-            print("Looks like you didn't enter a single letter! Please try again.")
+            print("Looks like you didn't enter a single lowercase letter! Please try again.")
             continue
         elif guess not in string.ascii_lowercase:
-            print("Looks like you didn't enter a letter! Please try again.")
+            print("Looks like you didn't enter a lowercase letter! Please try again.")
             continue
+        elif len(guess)<1:
+            print("Looks like you didn't enter anything! Please try again by selecting a letter.")   
 
         if guess not in guess_list:
             guess_list.append(guess)
 
-        if guess in answer:
+        if len(guess)<1:
+            print() 
+        elif guess in answer: 
             correct_guesses += guess
             print(f'{guess} is a letter of the word!')
         else:

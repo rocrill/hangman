@@ -85,6 +85,7 @@ I have manually tested this project throughout the development process by doing 
 
 * Capital letters in words from spredseet
 * Enter e or d - updated or to and
+* Blank spaces input resulted in a message confirming that "' ' is a letter in the word"
 
 ### Remaining bugs
 
