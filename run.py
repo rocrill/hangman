@@ -136,6 +136,7 @@ def play_game():
             return     
 
         guess = get_user_guess()
+        print('\n'*12)    
 
         #data validation.
         if len(guess)>1:
@@ -148,13 +149,14 @@ def play_game():
         if guess not in guess_list:
             guess_list.append(guess)
 
-        print("Guesses made so far are: " + ', '.join(guess_list))
         if guess in answer:
             correct_guesses += guess
             print(f'{guess} is a letter of the word!')
         else:
             print(f'{guess} is not a letter of the word :(')
             wrong_guess_count += 1
+        
+        print("Guesses made so far are: " + ', '.join(guess_list))
 
 welcome_message()
 play_game()
