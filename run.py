@@ -68,6 +68,7 @@ HANGMANPICS = [
 
 def welcome_message():
     print("Welcome to hangman!") 
+    print()
 
 def select_difficulty_level():
     """
