@@ -94,7 +94,7 @@ I have manually tested this project throughout the development process by doing 
 ### Validator testing
 
 * PEP8 
-    * No errors were returned form PEP8online.com
+    * No errors were returned from PEP8online.com
 
 ## Deployment
 
@@ -124,5 +124,5 @@ The Code Institue Heroku terminal.
 
 ## Acknowledgements
 
-Thank you to my Metor, Gerry McBride, for his help and guidance.
+Thank you to my Mentor, Gerry McBride, for his help and guidance.
 

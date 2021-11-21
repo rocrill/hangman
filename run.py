@@ -157,6 +157,7 @@ def play_game():
                       "You were cutting it close though..."
                       "you must need more practice :P")
             else:
+                print()
                 print("Congratulations, you won!")
             return
 
