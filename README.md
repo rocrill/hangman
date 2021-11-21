@@ -2,7 +2,7 @@
 
 Hangman is a Python terminal game, which runs in the Code Institute mock terminal on Heroku.
 
-Users can try to beat the computer by guessing letters in the randomly generated word, based on the number of letters in the word. Players have a limited number of wrong guesses they can make before the hangman Ascii diagram is complete, at which point the game ends.
+Users try to win the game by guessing the letters in the randomly generated word, based on the number of letters in the word. Players have a limited number of wrong guesses they can make before the hangman ASCII diagram is complete, at which point the game ends.
 
 
 [Here is the live version of my project.](https://hangman-rc.herokuapp.com/)
@@ -16,15 +16,19 @@ Hangman is traditionally a paper and pencil guessing game for two or more player
 
 The player first selects their desired difficulty level - easy or difficult.
 
-A random word is then generated from a list of words according to the level of diffuculty chosen. The initial hangman Ascii art image is displayed, along with an underscore for each letter in the answer.
+A random word is then generated from a list of words according to the level of diffuculty chosen. The initial hangman ASCII art image is displayed, along with an underscore for each letter in the answer.
 
-The user is then prompted to input their letter guesses. Each time the player guesses, there is a message displayed confirming whether the letter is in the word or not. If the letter is in the word, the underscore is replaced by that letter. If the letter is not in the word, the hangman ascii art progresses to the next image in the series of images, i.e. another body part is added to the man. 
+The user is then prompted to input their letter guesses. Each time the player guesses, there is a message displayed confirming whether the letter is in the word or not. If the letter is in the word, the underscore is replaced by that letter. If the letter is not in the word, the hangman ASCII art progresses to the next image in the series of images, i.e. another body part is added to the man. 
 
 As guesses are made, they are displayed in a list on the terminal for the remainder of the game, so that the player can easily reference what has already been guessed, helping them to make their next guess.
 
 The number of incorrect guesses that a user can make is limited to 5. Once 6 incorrect guesses are made, the hangman image shows the full man and the game is over. When the game is lost, the answer will also be revealed.
 
 The game will also end when all letters of the answer have been guessed correctly.
+
+## Target audience
+
+The target audience for this game is anybody who is looking for a simple interactive game for some light entertainment while improving their vocabulary. 
 
 ## Features
 
@@ -42,6 +46,13 @@ The game will also end when all letters of the answer have been guessed correctl
 
     ![Opening message and word generated](assets/images/word-generated.png)
 
+* Random word generation
+
+* Hangman ASCII art
+
+    * A new hangman image is displayed at different stages of the game. For every wrong guess input by the user, we progress through the list og hangman images and display the hangman image with a new body party added, until the final image of the full man when the game is ended. 
+
+    ![Hangman images](assets/images/hangman-images.png)
 
 * Accepts user input
 
@@ -107,6 +118,11 @@ This project was deployed using the Code Institute's mock terminal for Heroku.
     * Link the Heroku app to the repository.
     * Click 'Deploy'.
 
+## Libraries
+
+* GSPREAD was used to get values from the correct column in the hangman words spreadsheet for the word generation function.
+* Python's Random module was used to enable the game to randomly select a word from the Google hangman words spreadsheet. 
+* Python's String module was imported to enable user input validation by ensuring that lowercase letters are entered.
 
 ## Credits
 
@@ -124,5 +140,5 @@ The Code Institue Heroku terminal.
 
 ## Acknowledgements
 
-Thank you to my Mentor, Gerry McBride, for his help and guidance.
+Thank you to the Tutors at the Code Institute for their help, and to my Mentor, Gerry McBride, for his support and guidance.
 
