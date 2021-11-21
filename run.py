@@ -148,9 +148,7 @@ def play_game():
                 print("Game over! You were so close though!"
                       "Better luck next time :D")
             else:
-                print()
                 print("Game over! Better luck next time!")
-            print()    
             print(f"The answer was: {answer}")
             return
         elif game_points == len(answer):
@@ -159,7 +157,6 @@ def play_game():
                       "You were cutting it close though..."
                       "you must need more practice :P")
             else:
-                print()
                 print("Congratulations, you won!")
             return
 
