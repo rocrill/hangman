@@ -148,7 +148,9 @@ def play_game():
                 print("Game over! You were so close though!"
                       "Better luck next time :D")
             else:
+                print()
                 print("Game over! Better luck next time!")
+            print()    
             print(f"The answer was: {answer}")
             return
         elif game_points == len(answer):
