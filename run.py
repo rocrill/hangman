@@ -67,21 +67,24 @@ HANGMANPICS = [
 =========''']
 
 def welcome_message():
-    print("Welcome to hangman!") 
+    """
+    Prints game welcome message.
+    """
+    print("Welcome to hangman!")
     print()
 
 def select_difficulty_level():
     """
-    User selects difficulty level.
+    Invites user to input letter to select difficulty level.
     """
     level = None
     while level != 'e' and level != 'd':
-        level = input("Please choose a difficulty level. Enter 'e' for easy or 'd' for difficult:\n")   
-    return level 
+        level = input("Please choose a difficulty level. Enter 'e' for easy or 'd' for difficult:\n")
+    return level
 
 def select_word(level):
     """
-    Selects random word from Google Sheet database, based on user's chosen difficulty level.
+    Selects a random word from Google Sheet database, based on the user's chosen difficulty level.
     """
     if level == 'e':
         words = SHEET.worksheet("words").col_values(1)
@@ -92,41 +95,46 @@ def select_word(level):
 
 def get_user_guess():
     """
-    Get user letter guess for word.
+    Gets the user to input their letter guess.
     """
-    
     data_str = input("Enter your guess here:\n")
     return data_str
 
 def clear_screen():
+    """
+    Clears the terminal screen.
+    """
     print(chr(27)+'[2j')
     print('\033c')
-    print('\x1bc')   
+    print('\x1bc')
 
 def play_game():
     """
-    Plays game steps
+    Plays game by running through each game step.
     """
+    # Set the initial game state.
     wrong_guess_count = 0
     correct_guesses = ''
     guess_list = []
     level = select_difficulty_level()
-    answer = select_word(level).lower() 
+    answer = select_word(level).lower()
+    # Main game loop.
     while True:
+        # Display hangman image according to the number of wrong guesses made.
         image = HANGMANPICS[wrong_guess_count]
         print(image)
         print()
+        # Display correct letter guesses in answer word.
         game_points = 0
         for letter in answer:
             if letter in correct_guesses:
-                print(letter +' ', end='')
+                print(letter + ' ', end='')
                 game_points += 1
-            else: 
-                print('_ ', end='')    
-        print()        
-        
-        
-        #Exit game condition.
+            else:
+                print('_ ', end='')
+            print()
+      
+        # Exit game condition.
         if wrong_guess_count == 6:
             if game_points == len(answer) - 1:
                 print("Game over! You were so close though! Better luck next time :D") 
@@ -139,36 +147,37 @@ def play_game():
                 print("Congratulations, you won! You were cutting it close though...you must need more practice :P" )
             else:
                 print("Congratulations, you won!")
-            return     
+            return
 
+        # Get user to input letter guess.
         guess = get_user_guess()
-        clear_screen()   
+        clear_screen()
 
-        #data validation.
-        if len(guess)>1:
+        # Validate user input.
+        if len(guess) > 1:
             print("Looks like you didn't enter a single lowercase letter! Please try again.")
             continue
         elif guess not in string.ascii_lowercase:
             print("Looks like you didn't enter a lowercase letter! Please try again.")
             continue
-        elif len(guess)<1:
+        elif len(guess) < 1:
             print("Looks like you didn't enter anything! Please try again by selecting a letter.")   
 
+        # Add guesses to list displayed to user during game.
         if guess not in guess_list:
             guess_list.append(guess)
 
-        if len(guess)<1:
-            print() 
-        elif guess in answer: 
+        # Update game state based on user guess.
+        if len(guess) < 1:
+            print()
+        elif guess in answer:
             correct_guesses += guess
             print(f'{guess} is a letter of the word!')
         else:
             print(f'{guess} is not a letter of the word :(')
             wrong_guess_count += 1
-        
         print("Guesses made so far are: " + ', '.join(guess_list))
 
-clear_screen()   
+clear_screen()
 welcome_message()
 play_game()
-
