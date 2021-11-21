@@ -81,7 +81,7 @@ def select_difficulty_level():
     """
     level = None
     while level != 'e' and level != 'd':
-        level = input("Please choose a difficulty level."
+        level = input("Please choose a difficulty level. "
                       "Enter 'e' for easy or 'd' for difficult:\n")
     return level
 
@@ -140,23 +140,28 @@ def play_game():
                 game_points += 1
             else:
                 print('_ ', end='')
-            print()
+        print()
 
         # Exit game condition.
         if wrong_guess_count == 6:
             if game_points == len(answer) - 1:
+                print()
                 print("Game over! You were so close though!"
                       "Better luck next time :D")
             else:
+                print()
                 print("Game over! Better luck next time!")
+            print()    
             print(f"The answer was: {answer}")
             return
         elif game_points == len(answer):
             if wrong_guess_count > 4:
+                print()
                 print("Congratulations, you won!"
                       "You were cutting it close though..."
                       "you must need more practice :P")
             else:
+                print()
                 print("Congratulations, you won!")
             return
 
