@@ -146,7 +146,7 @@ def play_game():
         if wrong_guess_count == 6:
             if game_points == len(answer) - 1:
                 print()
-                print("Game over! You were so close though!"
+                print("Game over! You were so close though! "
                       "Better luck next time :D")
             else:
                 print()
@@ -157,7 +157,7 @@ def play_game():
         elif game_points == len(answer):
             if wrong_guess_count > 4:
                 print()
-                print("Congratulations, you won!"
+                print("Congratulations, you won! "
                       "You were cutting it close though..."
                       "you must need more practice :P")
             else:
@@ -171,15 +171,15 @@ def play_game():
 
         # Validate user input.
         if len(guess) > 1:
-            print("Looks like you didn't enter a single lowercase letter!"
+            print("Looks like you didn't enter a single lowercase letter! "
                   "Please try again.")
             continue
         elif guess not in string.ascii_lowercase:
-            print("Looks like you didn't enter a lowercase letter!"
+            print("Looks like you didn't enter a lowercase letter! "
                   "Please try again.")
             continue
         elif len(guess) < 1:
-            print("Looks like you didn't enter anything!"
+            print("Looks like you didn't enter anything! "
                   "Please try again by selecting a letter.")
 
         # Add guesses to list displayed to user during game.
