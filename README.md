@@ -91,7 +91,7 @@ I have manually tested this project throughout the development process by doing 
 * Playing the game in the Gitpod terminal to help identify required game features to improve the player experience, such as a displayed list of guesses, and displaying the answer when the game is lost.
 * Playing the game in the Heroku terminal to ensure it worked the same as in Gitpod, and to see what adjustments were needed for the final game layout.
 * Gave invalid inputs to the game to ensure data validation was working as expected, e.g. words, numbers, capital letters and empty spaces instead of lowercase single letters.
-* Played the game to get a variety of different scores to ensure that the Hangman images were displayed correctly and that the correct conditional messages appear based on the score, e.g. "Game over! You were so close though! Better luck next time :D"
+* Played the game to get a variety of different scores to ensure that the hangman images were displayed correctly and that the correct conditional messages appear based on the score, e.g. "Game over! You were so close though! Better luck next time :D"
 * Passed the code through a PEP8 linter and confirmed that there are no problems.
 
 ### Bugs
@@ -100,6 +100,7 @@ I have manually tested this project throughout the development process by doing 
 
 * Initially, words with capital letters were pulled randomly from the hangman words spreadsheet. This meant that if a player guessed a letter, for example 'r', the game would not recognise this as being the same letter as the word's capital 'R', and the 'R' would remain as an underscore, rather than being revealed. This was solved using the `lower()` method, which ensured that the selected word was all lowercase.
 * The user input validation in place, ensures that users get an error message when blank spaces are input. However, while an error message was displayed for any blank space input, the player would still receive a confirmation message confirming that "' ' is a letter in the word". To resolve this, I added a new condition to the relevant 'if else' statement which ensures that the length of the answer must be greater than one for this confirmation message to appear.
+* When the game was first tested in the Heroku terminal, the positioning of the hangman images and answer was inconsistent and visually confusing between game stages. To resolve this, I added the `clear_screen()` function between stages.
 
 ### Remaining bugs
 
