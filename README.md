@@ -75,11 +75,6 @@ The target audience for this game is anybody who is looking for a simple interac
 ![Multiple-letters input](assets/images/multiple-letters-entered.png)
 
 
-
-## Data model
-
-Tbc...
-
 ## Testing
 
 I have manually tested this project throughout the development process by doing the following:
@@ -94,9 +89,8 @@ I have manually tested this project throughout the development process by doing 
 
 #### Solved bugs
 
-* Capital letters in words from spredseet
-* Enter e or d - updated or to and
-* Blank spaces input resulted in a message confirming that "' ' is a letter in the word"
+* Initially, words with capital letters were pulled randomly from the hangman words spreadsheet. This meant that if a player guessed a letter, say 'r', the game would not recognise this as being the same letter as the word's capital 'R', and the 'R' would remain as an underscore, rather than being revealed. This was solved using the string library, which made sure that all generated words were entirely lowercase.
+* The user input validation in place, ensures that users get an error message when blank spaces are input. However, while the message was disaplyed to a user who had entered a blank space that they needed to enter a letter, the player would still receive a confirmation message confirming that "' ' is a letter in the word". To resolve this, I added a new condition to the relevant 'if else' statement which ensures that the length of the answer must be greater than one for this confirmation message to appear.
 
 ### Remaining bugs
 
